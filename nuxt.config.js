@@ -55,11 +55,11 @@ export default {
   },
 
   axios: {
-    baseURL: 'http://localhost:8000'
+    baseURL: 'https://be-laravel11-ecommerce-98816758a40c.herokuapp.com'
   },
 
   loading: {
-    color: 'white',	// <-- color
+    color: 'green',	// <-- color
     height: '5px'	// <-- height
   },
 
