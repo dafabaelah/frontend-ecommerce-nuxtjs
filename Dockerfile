@@ -1,5 +1,5 @@
 # Gunakan image resmi Node.js sebagai image dasar
-FROM node:18
+FROM node:18.20.3-slim
 
 # Atur direktori kerja di dalam container
 WORKDIR /usr/src/app
