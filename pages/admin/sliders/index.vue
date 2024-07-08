@@ -10,8 +10,23 @@
                 </div>
                 <div class="card-body">
 
-                    <nuxt-link :to="{name: 'admin-sliders-create'}" class="btn btn-warning btn-sm mb-3 p-2">
-                        <i class="fa fa-plus-circle"></i> ADD NEW</nuxt-link>
+                    <!-- <nuxt-link :to="{name: 'admin-sliders-create'}" class="btn btn-warning btn-sm mb-3 p-2">
+                        <i class="fa fa-plus-circle"></i> ADD NEW</nuxt-link> -->
+                    
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <nuxt-link :to="{name: 'admin-sliders-create'}" class="btn btn-warning btn-sm" style="padding-top: 10px;">
+                                <i class="fa fa-plus-circle"></i> ADD NEW</nuxt-link>
+                            </div>
+                            <input type="text" class="form-control" v-model="search" @keypress.enter="searchData" placeholder="cari berdasarkan nama slider">
+                            <div class="input-group-append">
+                                <button @click="searchData" class="btn btn-warning"><i class="fa fa-search"></i>
+                                SEARCH
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
                     <b-table striped bordered hover :items="sliders.data" :fields="fields" show-empty>
                     <template v-slot:cell(image)="data">
@@ -66,6 +81,9 @@
                     tdClass: 'text-center'
                 }
                 ],
+
+                //state search
+                search: ''
             }
         },
 
@@ -86,6 +104,16 @@
         //method
         methods: {
 
+            //method "searchData"
+            searchData() {
+
+                //commit to mutation "SET_PAGE"
+                this.$store.commit('admin/slider/SET_PAGE', 1)
+
+                //dispatch on action "getSlidersData"
+                this.$store.dispatch('admin/slider/getSlidersData', this.search)
+            },
+            
             //method "changePage"
             changePage(page) {
 
