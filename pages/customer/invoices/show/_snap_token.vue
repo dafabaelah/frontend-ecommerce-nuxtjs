@@ -93,7 +93,7 @@
                         </td>
                         <td>:</td>
                         <td>
-                        <button v-if="invoice.status == 'pending'"
+                        <button @click="payment(invoice.snap_token)" v-if="invoice.status == 'pending'"
                             class="btn btn-info">BAYAR SEKARANG</button>
                         <button v-else-if="invoice.status == 'success'"
                             class="btn btn-success"><i class="fa fa-check-circle"></i> {{ invoice.status }}</button>
@@ -184,6 +184,48 @@
                 return this.$store.state.customer.invoice.invoice
             }
         },
+
+        //method
+        methods: {
+
+            //method "payment"  
+            payment(snap_token) {
+                // window.snap.pay(snap_token) berfungsi untuk memanggil snap token yang sudah di generate
+                window.snap.pay(snap_token, {
+
+                    // onSuccess berfungsi untuk menangani ketika pembayaran berhasil
+                    onSuccess: function () {
+                    // redirect ke halaman invoice
+                    router.push({
+                        // name: 'invoices-show-snap_token' berfungsi untuk mengarahkan ke halaman invoice
+                        name: 'invoices-show-snap_token',
+                        // params: {snap_token: snap_token} berfungsi untuk mengirim snap token ke halaman invoice
+                        params: {
+                        snap_token: snap_token
+                        }
+                    })
+                    },
+                    // onPending berfungsi untuk menangani ketika pembayaran masih dalam proses
+                    onPending: function () {
+                    router.push({
+                        name: 'invoices-show-snap_token',
+                        params: {
+                        snap_token: snap_token
+                        }
+                    })
+                    },
+                    // onError berfungsi untuk menangani ketika pembayaran gagal
+                    onError: function () {
+                    router.push({
+                        name: 'invoices-show-snap_token',
+                        params: {
+                        snap_token: snap_token
+                        }
+                    })
+                    }
+                })
+            },
+        }
 
     }
 </script>

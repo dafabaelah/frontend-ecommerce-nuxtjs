@@ -22,7 +22,7 @@ export default {
     ],
     script: [
       { src: '/js/coreui.bundle.min.js' }, 
-      { src: 'https://app.sandbox.midtrans.com/snap/snap.js', 'data-client-key': 'paste_client_Key_midtrans_disini' }, 
+      { src: 'https://app.sandbox.midtrans.com/snap/snap.js', 'data-client-key': 'SB-Mid-client-qN_WviF2qIPLfDoe' }, 
     ]
   },
 
