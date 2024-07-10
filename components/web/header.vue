@@ -41,19 +41,29 @@
                 aria-expanded="false"> <span class="navbar-toggler-icon"></span> </button>
                 <div class="navbar-collapse collapse" id="dropdown6">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"> <a href="#" class="nav-link" data-abc="true"><i class="fa fa-list-ul"></i> KATEGORI</a> </li>
-                    <li class="nav-item"> <a href="#" class="nav-link" data-abc="true"><i class="fa fa-shopping-bag"></i> SEMUA PRODUK</a> </li>
+                    <li class="nav-item dropdown"> <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-abc="true" aria-expanded="false"><i class="fa fa-list-ul"></i> KATEGORI</a>
+                        <div class="dropdown-menu">
+                            <nuxt-link :to="{name: 'categories-slug', params: {slug: category.slug}}" class="dropdown-item" v-for="category in categories" :key="category.id">
+                                <img :src="category.image" width="50"> {{ category.name }}
+                            </nuxt-link>
+                            <div class="dropdown-divider"></div>
+                            <nuxt-link :to="{name: 'categories'}" class="dropdown-item active text-center" href="" data-abc="true">
+                            LIHAT SEMUA KATEGORI <i class="fa fa-long-arrow-alt-right"></i>
+                            </nuxt-link>
+                        </div>
+                    </li>
+                    <li class="nav-item"> <nuxt-link :to="{name: 'products'}" class="nav-link" data-abc="true"><i class="fa fa-shopping-bag"></i> SEMUA PRODUK</nuxt-link> </li>
                     <li class="nav-item"> <a href="#" class="nav-link" data-abc="true"><i class="fa fa-info-circle"></i> TENTANG</a> </li>
                     <li class="nav-item"> <a href="#" class="nav-link" data-abc="true"><i class="fa fa-comments"></i> KONTAK</a> </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown" v-if="!$auth.loggedIn">
-                    <nuxt-link :to="{name: 'customer-login'}" class="nav-link" href="#" role="button" aria-expanded="false"> <i class="fa fa-user-circle"></i>
-                        ACCOUNT</nuxt-link>
+                        <nuxt-link :to="{name: 'customer-login'}" class="nav-link" href="#" role="button" aria-expanded="false"> <i class="fa fa-user-circle"></i>
+                            ACCOUNT</nuxt-link>
                     </li>
                     <li class="nav-item dropdown" v-if="$auth.loggedIn">
-                    <nuxt-link :to="{name: 'customer-dashboard'}" class="nav-link" href="#" role="button" aria-expanded="false"> <i class="fa fa-tachometer-alt"></i>
-                        DASHBOARD</nuxt-link>
+                        <nuxt-link :to="{name: 'customer-dashboard'}" class="nav-link" href="#" role="button" aria-expanded="false"> <i class="fa fa-tachometer-alt"></i>
+                            DASHBOARD</nuxt-link>
                     </li>
                 </ul>
                 </div>
@@ -64,7 +74,21 @@
 
 <script>
 export default {
+    //hook "fetch"
+    async fetch() {
 
+        //fething sliders on Rest API
+        await this.$store.dispatch('web/category/getCategoriesData')
+    },
+
+    //computed
+    computed: {
+    
+        //categories
+        categories() {
+            return this.$store.state.web.category.categories
+        },
+    }
 
 }
 </script>
