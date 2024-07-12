@@ -12,16 +12,16 @@
                 <div class="col-lg-4 col-xl-5 col-sm-8 col-md-4 d-none d-md-block">
                     <div class="search-wrap">
                     <div class="input-group w-100"> 
-                        <input type="text" class="form-control search-form" style="width:55%;" placeholder="mau belanja apa hari ini ?">
+                        <input type="text" class="form-control search-form" placeholder="mau belanja apa hari ini... ?">
                         <div class="input-group-append"> 
-                        <button class="btn btn-primary search-button"> <i class="fa fa-search"></i> </button> 
+                            <button class="btn btn-primary search-button"> <i class="fa fa-search"></i> </button> 
                         </div>
                     </div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-xl-4 col-sm-8 col-md-4 col-7">
                     <div class="d-flex justify-content-end">
-                    <a href="#" class="btn search-button btn-md d-md-block ml-4"><i class="fa fa-shopping-cart"></i> <span class="ml-2">0</span> | Rp. 0</a>
+                        <nuxt-link :to="{name: 'cart'}" class="btn search-button btn-md d-md-block ml-4"><i class="fa fa-shopping-cart"></i> <span class="ml-2">{{ cartTotal }}</span> | Rp. {{ formatPrice(cartPrice) }}</nuxt-link>
                     </div>
                 </div>
                 </div>
@@ -31,9 +31,9 @@
             <div class="container-fluid">
                 <div class="d-md-none my-2">
                 <div class="input-group"> 
-                    <input type="search" name="search" class="form-control" placeholder="mau belanja apa hari ini ?">
+                    <input type="search" name="search" class="form-control" v-model="search" @keypress.enter="searchData" placeholder="mau belanja apa hari ini ?">
                     <div class="input-group-append"> 
-                    <button class="btn btn-warning"> <i class="fa fa-search"></i></button> 
+                        <button @click="searchData" class="btn btn-warning"> <i class="fa fa-search"></i></button> 
                     </div>
                 </div>
                 </div> 
@@ -73,24 +73,65 @@
 </template>
 
 <script>
-export default {
-    //hook "fetch"
-    async fetch() {
+    export default {
 
-        //fething sliders on Rest API
-        await this.$store.dispatch('web/category/getCategoriesData')
-    },
+        //hook "fetch"
+        async fetch() {
 
-    //computed
-    computed: {
-    
-        //categories
-        categories() {
-            return this.$store.state.web.category.categories
+            //fething sliders on Rest API
+            await this.$store.dispatch('web/category/getCategoriesData')
+
+            if(this.$auth.loggedIn && this.$auth.strategy.name == 'customer') {
+
+                //fething carts on Rest API
+                await this.$store.dispatch('web/cart/getCartsData')
+                await this.$store.dispatch('web/cart/getCartPrice')
+
+            }
         },
-    }
 
-}
+        //computed
+        computed: {
+            
+            //categories
+            categories() {
+                return this.$store.state.web.category.categories
+            },
+
+            //cartPrice
+            cartPrice() {
+                return this.$store.state.web.cart.cartPrice
+            },
+
+            //cartTotal
+            cartTotal() {
+                return this.$store.state.web.cart.carts.length
+            },
+        },
+
+        //data function
+        data() {
+            return {
+
+                //state search
+                search: ''
+            }
+        },
+
+        //method
+        methods: {
+            searchData() {
+                console.log(`Search query: ${this.search}`);
+                this.$router.push({
+                    name: 'search',
+                    query: {
+                        q: this.search
+                    }
+                });
+            }
+        }
+
+    }
 </script>
 
 <style scoped>

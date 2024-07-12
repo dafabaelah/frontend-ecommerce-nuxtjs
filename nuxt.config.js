@@ -60,7 +60,8 @@ export default {
   },
 
   axios: {
-    baseURL: 'https://be-laravel11-ecommerce-98816758a40c.herokuapp.com'
+    // baseURL: 'https://be-laravel11-ecommerce-98816758a40c.herokuapp.com'
+    baseURL: 'http://localhost:8000'
   },
 
   loading: {

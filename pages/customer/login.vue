@@ -92,6 +92,10 @@
 
                 .then(() => {
 
+                    //fething carts on Rest API
+                    this.$store.dispatch('web/cart/getCartsData')
+                    this.$store.dispatch('web/cart/getCartPrice')
+
                     //redirect
                     this.$router.push({
                     name: 'customer-dashboard'
