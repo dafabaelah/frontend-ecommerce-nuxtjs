@@ -134,7 +134,7 @@
                             </table>
 
                             <!-- modal button -->
-                            <button v-if="invoice.status == 'pending'" type="button" class="btn btn-warning-2 mt-4" data-toggle="modal" :data-target="'#modal-'+order.id">
+                            <button v-if="invoice.status == 'success'" type="button" class="btn btn-warning-2 mt-4" data-toggle="modal" :data-target="'#modal-'+order.id">
                                 BERIKAN ULASAN
                             </button>
                             <!-- /modal button -->
