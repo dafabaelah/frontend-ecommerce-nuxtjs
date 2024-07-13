@@ -12,9 +12,9 @@
                 <div class="col-lg-4 col-xl-5 col-sm-8 col-md-4 d-none d-md-block">
                     <div class="search-wrap">
                     <div class="input-group w-100"> 
-                        <input type="text" class="form-control search-form" placeholder="mau belanja apa hari ini... ?">
+                        <input type="text" class="form-control" v-model="search" @keypress.enter="searchData" placeholder="mau belanja apa hari ini... ?">
                         <div class="input-group-append"> 
-                            <button class="btn btn-primary search-button"> <i class="fa fa-search"></i> </button> 
+                            <button @click="searchData" class="btn btn-primary search-button"> <i class="fa fa-search"></i> </button> 
                         </div>
                     </div>
                     </div>

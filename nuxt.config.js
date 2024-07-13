@@ -44,7 +44,25 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/pwa',
   ],
+
+  pwa: {
+    meta: {
+      title: 'MI STORE - Distributor Xiaomi Indonesia Resmi',
+      author: 'Xiaomi Indonesia'
+    },
+    manifest: {
+      name: 'Xiaomi',
+      short_name: 'xiaomi',
+      description: 'Official Toko Online Penjualan Produk Xiaomi',
+      lang: 'en'
+    },
+    icon: {
+      fileName: 'images/logo.png',
+      sizes: [64, 120, 144, 152, 192, 384, 512]
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
