@@ -22,7 +22,7 @@ export default {
     ],
     script: [
       { src: '/js/coreui.bundle.min.js' }, 
-      { src: 'https://app.sandbox.midtrans.com/snap/snap.js', 'data-client-key': 'SB-Mid-client-qN_WviF2qIPLfDoe' }, 
+      { src: 'https://app.sandbox.midtrans.com/snap/snap.js', 'data-client-key': process.env.DATA_CLIENT_MIDTRANS }, 
     ]
   },
 
@@ -53,6 +53,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth-next',
     'vue-sweetalert2/nuxt',
+    '@nuxtjs/dotenv',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -61,7 +62,7 @@ export default {
 
   axios: {
     // baseURL: 'https://be-laravel11-ecommerce-98816758a40c.herokuapp.com'
-    baseURL: 'http://localhost:8000'
+    baseURL: process.env.BE_BASE_URL || 'http://localhost:8000'
   },
 
   loading: {
