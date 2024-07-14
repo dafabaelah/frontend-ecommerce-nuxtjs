@@ -52,15 +52,34 @@ export default {
       title: 'MI STORE - Distributor Xiaomi Indonesia Resmi',
       author: 'Xiaomi Indonesia'
     },
+
     manifest: {
       name: 'Xiaomi',
       short_name: 'xiaomi',
       description: 'Official Toko Online Penjualan Produk Xiaomi',
       lang: 'en'
     },
+
     icon: {
       fileName: 'images/logo.png',
       sizes: [64, 120, 144, 152, 192, 384, 512]
+    },
+
+    workbox: {
+      runtimeCaching: [
+        {
+          urlPattern: '/*',
+          handler: 'networkFirst',
+          method: 'GET',
+          strategyOptions: { 
+            cacheName: 'my-cache' ,
+            cacheExpiration: {
+              maxEntries: 100, // maksimal 100 item
+              maxAgeSeconds: 7 * 24 * 60 * 60, // 7 hari, 24 jam, 60 menit, 60 detik
+            }
+          }
+        }
+      ]
     }
   },
 
