@@ -83,7 +83,12 @@
 </template>
 
 <script>
+    import VueImageZoomer from 'vue-image-zoomer';
     export default {
+
+        components: {
+            VueImageZoomer
+        },
 
         //layout
         layout: 'admin',

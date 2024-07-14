@@ -37,6 +37,7 @@ export default {
     { src: '~/plugins/vue-star-rating.js', mode: 'client' },
     { src: '~/plugins/chart.js', mode: 'client' },
     { src: '~/plugins/mixins.js' },
+    { src: '~/plugins/vue-image-zoomer.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

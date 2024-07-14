@@ -3,47 +3,56 @@
         <div class="fade-in">
         <div class="row">
 
-            <div class="col-md-4 mb-4">
-            <div class="card border-0 rounded shadow-sm">
-                <div class="card-body">
-                <img :src="product.image" class="w-100 rounded">
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 rounded shadow-sm">
+                    <div class="card-body">
+                        <!-- <img :src="product.image" class="w-100 rounded"> -->
+                        <client-only>
+                            <vue-image-zoomer
+                                :lazyload = "true"
+                                :regular="product.image"
+                                :zoom="product.image"
+                                alt="Image"
+                                img-class="card-img img-fluid w-100 rounded"
+                            />
+                        </client-only>
+                    </div>
                 </div>
-            </div>
             </div>
 
-            <div class="col-md-8">
-            <div class="card border-0 rounded shadow-sm">
-                <div class="card-body">
-                <h4>{{ product.title }}</h4>
-                <hr>
-                <h6 class="mb-0 font-weight-semibold"><s class="text-red">Rp. {{ formatPrice(product.price) }}</s> /
-                    <strong>{{ product.discount }} %</strong></h6>
-                <h5 class="mb-0 font-weight-semibold mt-3 text-success">Rp. {{ formatPrice(calculateDiscount(product)) }}
-                </h5>
-                <div class="mt-3">
-                    <div v-html="product.description"></div>
+            <div class="col-md-6">
+                <div class="card border-0 rounded shadow-sm">
+                    <div class="card-body">
+                    <h4>{{ product.title }}</h4>
+                    <hr>
+                    <h6 class="mb-0 font-weight-semibold"><s class="text-red">Rp. {{ formatPrice(product.price) }}</s> /
+                        <strong>{{ product.discount }} %</strong></h6>
+                    <h5 class="mb-0 font-weight-semibold mt-3 text-success">Rp. {{ formatPrice(calculateDiscount(product)) }}
+                    </h5>
+                    <div class="mt-3">
+                        <div v-html="product.description"></div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-sm table-borderless mb-0">
+                        <tbody>
+                            <client-only>
+                            <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>BERAT</strong></th>
+                            <td><strong>{{ product.weight }}</strong> gram</td>
+                            </tr>
+                            <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>STOK</strong></th>
+                            <td><strong>{{ product.stock }}</strong></td>
+                            </tr>
+                            </client-only>
+                        </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <button @click="addToCart(product.id, calculateDiscount(product), product.weight)" class="btn btn-lg btn-warning border-0 shadow-sm"><i class="fa fa-shopping-cart"></i> TAMBAH KE
+                        KERANJANG</button>
+                    </div>
                 </div>
-                <div class="table-responsive">
-                    <table class="table table-sm table-borderless mb-0">
-                    <tbody>
-                        <client-only>
-                        <tr>
-                        <th class="pl-0 w-25" scope="row"><strong>BERAT</strong></th>
-                        <td><strong>{{ product.weight }}</strong> gram</td>
-                        </tr>
-                        <tr>
-                        <th class="pl-0 w-25" scope="row"><strong>STOK</strong></th>
-                        <td><strong>{{ product.stock }}</strong></td>
-                        </tr>
-                        </client-only>
-                    </tbody>
-                    </table>
-                </div>
-                <hr>
-                <button @click="addToCart(product.id, calculateDiscount(product), product.weight)" class="btn btn-lg btn-warning border-0 shadow-sm"><i class="fa fa-shopping-cart"></i> TAMBAH KE
-                    KERANJANG</button>
-                </div>
-            </div>
             </div>
 
         </div>

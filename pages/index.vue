@@ -19,7 +19,16 @@
           <div class="card h-100 border-0 rounded shadow-sm">
             <div class="card-body">
               <div class="card-img-actions"> 
-                <img :src="product.image" class="card-img img-fluid"> 
+                <!-- <img :src="product.image" class="card-img img-fluid">  -->
+                <client-only>
+                  <vue-image-zoomer
+                      :lazyload = "true"
+                      :regular="product.image"
+                      :zoom="product.image"
+                      alt="Image"
+                      img-class="card-img img-fluid"
+                  />
+                </client-only>
               </div>
             </div>
             <div class="card-body bg-light-custom text-center rounded-bottom">
