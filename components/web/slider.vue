@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid mt-custom">
+    <div class="container-fluid mt-custom mt-mobile">
         <div id="mycarousel" class="carousel slide" data-ride="carousel" data-interval="4000">
         
             <div class="carousel-inner">

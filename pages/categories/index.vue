@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid mt-custom">
+    <div class="container-fluid mt-custom mt-mobile">
         <div class="fade-in">
             <div class="row justify-content-center">
                 <div class="col-md-3 mb-3" v-for="category in categories" :key="category.id">

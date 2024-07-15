@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 export default {
   server: {
     port: process.env.PORT || 3000, // default: 3000
@@ -38,6 +40,7 @@ export default {
     { src: '~/plugins/chart.js', mode: 'client' },
     { src: '~/plugins/mixins.js' },
     { src: '~/plugins/vue-image-zoomer.js', mode: 'client' },
+    { src: '~/plugins/network-status.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -92,6 +95,7 @@ export default {
     '@nuxtjs/auth-next',
     'vue-sweetalert2/nuxt',
     '@nuxtjs/dotenv',
+    '@nuxtjs/proxy',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -99,12 +103,19 @@ export default {
   },
 
   axios: {
-    // baseURL: 'https://be-laravel11-ecommerce-98816758a40c.herokuapp.com'
-    baseURL: process.env.BE_BASE_URL || 'http://localhost:8000'
+    // baseURL: process.env.BE_BASE_URL || 'http://localhost:8000'
+    proxy: true
+  },
+
+  proxy: {
+    '/api/': {
+      target: process.env.BE_BASE_URL || 'http://localhost:8000',
+      pathRewrite: { '^/': '' }
+    }
   },
 
   loading: {
-    color: 'green',	// <-- color
+    color: 'blue',	// <-- color
     height: '5px'	// <-- height
   },
 
@@ -156,6 +167,24 @@ export default {
       },
 
     },
+  },
+
+  render: {
+    fallback: {
+      static: {
+        handlers: {
+          '.html': false
+        },
+        mime: {
+          'text/html': ['phtml'] 
+        }
+      },
+      dist: {
+        handlers: {
+          '.html': false
+        }
+      }
+    }
   },
 
 }

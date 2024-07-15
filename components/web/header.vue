@@ -41,7 +41,7 @@
                 aria-expanded="false"> <span class="navbar-toggler-icon"></span> </button>
                 <div class="navbar-collapse collapse" id="dropdown6">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown"> <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-abc="true" aria-expanded="false"><i class="fa fa-list-ul"></i> KATEGORI</a>
+                    <li class="nav-item dropdown dropdown-menu-scroll"> <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" data-abc="true" aria-expanded="false"><i class="fa fa-list-ul"></i> KATEGORI</a>
                         <div class="dropdown-menu">
                             <nuxt-link :to="{name: 'categories-slug', params: {slug: category.slug}}" class="dropdown-item" v-for="category in categories" :key="category.id">
                                 <img :src="category.image" width="50"> {{ category.name }}

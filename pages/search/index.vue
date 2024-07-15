@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid mt-custom">
+    <div class="container-fluid mt-custom mt-mobile">
         <div class="fade-in">
 
         <div class="row">

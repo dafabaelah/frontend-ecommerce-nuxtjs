@@ -23,7 +23,7 @@
                 <!-- end content -->
 
                 <footer class="c-footer">
-                <div><strong>MI STORE</strong> &copy; 2021 - SantriKoding.com.</div>
+                <div><strong>MI STORE</strong> &copy; 2024 | code: Daffa Akhdan Fadhillah</div>
                 <div class="ml-auto">Template by&nbsp;<a href="https://coreui.io/">CoreUI</a></div>
                 </footer>
             </div>

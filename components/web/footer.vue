@@ -60,7 +60,7 @@
             </div>
             <div class="row text-center mt-3 pb-3">
                 <div class="col-md-12">
-                <hr> © <strong>MI STORE</strong> 2024 • Hak Cipta Dilindungi </div>
+                <hr> © <strong>MI STORE</strong> 2024 • Hak Cipta Dilindungi | code: Daffa Akhdan Fadhillah</div>
             </div>
         </div>
     </footer>

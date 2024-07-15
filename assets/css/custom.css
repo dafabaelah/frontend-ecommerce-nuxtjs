@@ -372,3 +372,31 @@ hr.solid {
     object-fit: cover;
     border-radius: 50%;
 }
+
+/* media resposive */
+@media (max-width: 360px) {
+    .mt-mobile {
+        margin-top: 180px;
+    }
+    .dropdown-menu-scroll {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+}
+
+@media (min-width: 361px) and (max-width: 480px) {
+    .mt-mobile {
+        margin-top: 180px;
+    }
+    .dropdown-menu-scroll {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .dropdown-menu-scroll {
+        max-height: 250px;
+        overflow-y: auto;
+    }
+}
