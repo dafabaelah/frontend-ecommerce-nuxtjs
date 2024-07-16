@@ -66,4 +66,16 @@ jobs:
                       -t registry.heroku.com/$HEROKU_APP_NAME/web .
           docker push registry.heroku.com/$HEROKU_APP_NAME/web
           heroku container:release web --app $HEROKU_APP_NAME
+      
+      - name: Push to Docker Hub
+        env:
+          DOCKER_REPO: ${{ secrets.DOCKER_REPO }}
+          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: |
+          TIMESTAMP=$(date +%Y%m%d%H%M%S)
 
+          echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+          docker tag registry.heroku.com/$HEROKU_APP_NAME/web $DOCKER_USERNAME/$DOCKER_REPO:${TIMESTAMP}
+          docker push $DOCKER_USERNAME/$DOCKER_REPO:${TIMESTAMP}
+          docker push $DOCKER_USERNAME/$DOCKER_REPO:latest
