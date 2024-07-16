@@ -1,4 +1,41 @@
-# frontend-ecommerce
+# Mi Store - Portofolio Web
+
+This is the Mi Store website, an e-commerce platform for buying and selling electronic goods for Xiaomi's distributor store. It offers a wide range of Xiaomi products that can be delivered all over Indonesia and supports online payment methods.
+
+## Tech Stack
+
+![NuxtJS](https://img.shields.io/badge/NuxtJS-00C58E?style=for-the-badge&logo=nuxt.js&logoColor=white)
+![CoreUI](https://img.shields.io/badge/CoreUI-F95759?style=for-the-badge&logo=coreui&logoColor=white)
+![BootstrapVue](https://img.shields.io/badge/BootstrapVue-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Vue ChartJS](https://img.shields.io/badge/Vue_ChartJS-4BC0C0?style=for-the-badge&logo=chart.js&logoColor=white)
+![Vue Sweetalert2](https://img.shields.io/badge/Vue_Sweetalert2-FF4154?style=for-the-badge&logo=sweetalert&logoColor=white)
+![Vue Image Zoomer](https://img.shields.io/badge/Vue_Image_Zoomer-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)
+![dotenv](https://img.shields.io/badge/dotenv-ECD53F?style=for-the-badge&logo=.env&logoColor=black)
+![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+![Auth Next](https://img.shields.io/badge/Auth_Next-00A1F1?style=for-the-badge&logo=auth0&logoColor=white)
+![Nuxt Proxy](https://img.shields.io/badge/Nuxt_Proxy-00C58E?style=for-the-badge&logo=nuxt.js&logoColor=white)
+![Midtrans](https://img.shields.io/badge/Midtrans-0C7CD5?style=for-the-badge&logo=midtrans&logoColor=white)
+
+
+### Frameworks & Libraries
+
+- **NuxtJS**: A powerful framework for building server-side rendered Vue.js applications with automatic route handling.
+- **CoreUI**: A robust UI kit with components and templates for building responsive user interfaces.
+- **BootstrapVue**: Integration of Bootstrap with Vue.js for creating responsive, modern designs.
+- **Vue ChartJS**: A wrapper for Chart.js, enabling the creation of interactive charts within Vue.js applications.
+- **Vue Sweetalert2**: A wrapper for SweetAlert2, providing stylish and easy-to-use alert messages in Vue.js applications.
+- **Vue Image Zoomer**: A Vue.js component for adding zoom functionality to images.
+- **dotenv**: A module that loads environment variables from a `.env` file into `process.env`.
+- **Axios**: A library for making HTTP requests from node.js or XMLHttpRequests from the browser.
+- **Auth Next**: An authentication module for Nuxt.js that supports various authentication strategies.
+- **Nuxt Proxy**: A proxy module for Nuxt.js, making it easier to develop with APIs running on different servers.
+- **Midtrans**: A payment gateway solution to handle online payments seamlessly.
+
+## Screenshoots
+### Home User
+![Screenshot 1](./screenshots/portfolio%20mi%20store.png)
+### Dashboard Admin
+![Screenshot 2](./screenshots/portfolio%20mi%20store%20-%20dashboard%20admin.png)
 
 ## Build Setup
 

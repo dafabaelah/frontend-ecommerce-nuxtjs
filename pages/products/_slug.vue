@@ -1,5 +1,5 @@
 <template>
-    <div class="container mt-custom mb-5">
+    <div class="container mt-custom mb-5 mt-mobile">
         <div class="fade-in">
         <div class="row">
 
